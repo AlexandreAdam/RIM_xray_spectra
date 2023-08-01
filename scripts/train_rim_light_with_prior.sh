@@ -12,7 +12,7 @@
 source $HOME/environments/milex/bin/activate
 python $HOME/scratch/RIM_xray_spectra/scripts/train_rim.py \
     --data_path=$HOME/scratch/RIM_xray_spectra/data/\
-    --prior_model=$HOME/scratch.RIM_xray_spectra/models/score_xray_cluster_20230731_2\
+    --prior_model=$HOME/scratch/RIM_xray_spectra/models/score_xray_cluster_20230731_2\
     --prior_temperature=0.1\
     --logdir=$HOME/scratch/RIM_xray_spectra/models/\
     --logname_prefix=rim_xray_xlusters_light\
