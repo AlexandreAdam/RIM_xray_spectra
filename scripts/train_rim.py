@@ -39,7 +39,7 @@ def main(args):
     @vmap
     def likelihood_score_fn(x, y, A, sigma_n): # make sure to respect this signature (x, y, *args)
         y_pred = A @ x.squeeze() # remove channel dimension of x.
-        score = - (y - y_pred) @ (-A) / sigma_n**2
+        score = - (y - y_pred).T @ (-A) / sigma_n**2
         return score.unsqueeze(0) # give score back its channel dimensions
     
     def score_fn(x, y, A, sigma_n):

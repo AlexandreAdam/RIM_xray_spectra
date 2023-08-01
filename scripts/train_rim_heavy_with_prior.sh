@@ -20,8 +20,6 @@ python $HOME/scratch/RIM_xray_spectra/scripts/train_rim.py \
     --snr_max=100\
     --snr_min=5\
     --noise_distribution=log_uniform\
-
-
     --hyperparameters=$HOME/scratch/RIM_xray_spectra/scripts/rim_xray_heavy_hparams.json\
     --epochs=20000\
     --clip=1\
