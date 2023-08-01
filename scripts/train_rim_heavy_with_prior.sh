@@ -6,7 +6,7 @@
 #SBATCH --mem=32G                        # memory per node
 #SBATCH --time=00-23:00         # time (DD-HH:MM)
 #SBATCH --account=rrg-lplevass
-#SBATCH --job-name=Train_RIM_xray
+#SBATCH --job-name=Train_RIM_xray_prior
 #SBATCH --output=%x-%j.out
 
 source $HOME/environments/milex/bin/activate
@@ -15,7 +15,7 @@ python $HOME/scratch/RIM_xray_spectra/scripts/train_rim.py \
     --prior_model=$HOME/scratch/RIM_xray_spectra/models/score_xray_clusters_20230731_2\
     --prior_temperature=0.1\
     --logdir=$HOME/scratch/RIM_xray_spectra/models/\
-    --logname_prefix=rim_xray_clusters_heavy\
+    --logname_prefix=rim_xray_clusters_heavy_with_prior\
     --snr_max=100\
     --snr_min=5\
     --noise_distribution=log_uniform\
