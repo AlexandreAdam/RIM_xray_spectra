@@ -4,8 +4,9 @@ python $HOME/Desktop/Projects/RIM_xray_spectra/scripts/train_rim.py \
     --transpose_response\
     --logdir=$HOME/Desktop/Projects/RIM_xray_spectra/models/\
     --logname_prefix=rim_local_test\
-    --snr_max=100\
+    --snr_max=1000\
     --snr_min=5\
+    --noise_distribution=log_uniform\
     --hyperparameters=$HOME/Desktop/Projects/RIM_xray_spectra/scripts/rim_xray_light_hparams.json\
     --epochs=2\
     --clip=1\

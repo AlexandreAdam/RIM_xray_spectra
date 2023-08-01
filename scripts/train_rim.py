@@ -15,7 +15,7 @@ def main(args):
     max_ = 175
     
     if args.prior_model is not None:
-        prior = ScoreModel(checkpoints_directory=args.prior_model)
+        prior = ScoreModel(checkpoints_directory=args.prior_model, dimensions=1)
         temperature = lambda batch_size: torch.ones(batch_size).to(DEVICE) * args.prior_temperature # at which temperature to evaluate the prior
         def prior_score(x):
             B, *D = x.shape
