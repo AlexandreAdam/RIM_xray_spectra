@@ -4,7 +4,7 @@
 #SBATCH --cpus-per-task=1 # maximum cpu per task is 3.5 per gpus
 #SBATCH --gres=gpu:1
 #SBATCH --mem=32G                        # memory per node
-#SBATCH --time=02-00:00         # time (DD-HH:MM)
+#SBATCH --time=00-23:00         # time (DD-HH:MM)
 #SBATCH --account=rrg-lplevass
 #SBATCH --job-name=Train_RIM_xray
 #SBATCH --output=%x-%j.out
@@ -27,6 +27,6 @@ python $HOME/scratch/RIM_xray_spectra/scripts/train_rim.py \
     --learning_rate=1e-4\
     --checkpoints=1\
     --models_to_keep=3\
-    --max_time=30\
+    --max_time=22\
     --lr_schedule_step_size=1000\
     --lr_schedule_gamma=0.7
