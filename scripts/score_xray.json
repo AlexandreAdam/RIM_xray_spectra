@@ -1,0 +1,9 @@
+{
+    "channels": 1,
+    "dimensions": 1,
+    "sigma_min": 1e-3,
+    "sigma_max": 200,
+    "nf": 64,
+    "ch_mult": [2, 2]
+}
+

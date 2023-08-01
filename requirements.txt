@@ -1,0 +1,7 @@
+score_models>=0.4.7
+torch>=2.0
+rim>=0.2
+matplotlib
+numpy
+scipy
+tqdm

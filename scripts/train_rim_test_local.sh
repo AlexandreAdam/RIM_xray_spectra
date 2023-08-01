@@ -1,0 +1,19 @@
+#!/bin/bash
+python $HOME/Desktop/Projects/RIM_xray_spectra/scripts/train_rim.py \
+    --data_path=$HOME/Desktop/Projects/RIM_xray_spectra/data/RIM_clusters/\
+    --transpose_response\
+    --logdir=$HOME/Desktop/Projects/RIM_xray_spectra/models/\
+    --logname_prefix=rim_local_test\
+    --snr_max=100\
+    --snr_min=5\
+    --hyperparameters=$HOME/Desktop/Projects/RIM_xray_spectra/scripts/rim_xray_light_hparams.json\
+    --epochs=2\
+    --clip=1\
+    --ema_decay=0.99\
+    --batch_size=32\
+    --learning_rate=1e-4\
+    --checkpoints=1\
+    --models_to_keep=3\
+    --max_time=0.1\
+    --lr_schedule_step_size=1000\
+    --lr_schedule_gamma=0.7
