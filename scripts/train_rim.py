@@ -9,10 +9,8 @@ DEVICE = torch.device("cuda:0" if torch.cuda.is_available() else "cpu")
 
 
 def main(args):
-    responses_data = pickle.load(open(os.path.join(args.data_path, 'rmfs_original.pkl'), 'rb'))
-    true_spectra_data = pickle.load(open(os.path.join(args.data_path, 'true_original.pkl'), 'rb'))
-    min_ = 35
-    max_ = 175
+    X = np.load(os.path.join(args.data_path, "spectra_train.npy"))
+    A_dataset = np.load(os.path.join(args.data_path, "A_train.npy"))
     
     if args.prior_model is not None:
         prior = ScoreModel(checkpoints_directory=args.prior_model, dimensions=1)
@@ -23,13 +21,6 @@ def main(args):
     else:
         prior_score = lambda x: 0.
 
-    # Read in A, and x
-    X = np.stack([data[1][1][min_:max_] for data in true_spectra_data.items()])
-    if args.transpose_response:
-        print("Using transposed response matrix")
-        A_dataset = np.stack([responses_data[val][min_:max_,min_:max_].T for val in responses_data]) #
-    else:
-        A_dataset = np.stack([responses_data[val][min_:max_,min_:max_] for val in responses_data]) #
     
     snr_max = args.snr_max
     snr_min = args.snr_min
@@ -39,7 +30,7 @@ def main(args):
     @vmap
     def likelihood_score_fn(x, y, A, sigma_n): # make sure to respect this signature (x, y, *args)
         y_pred = A @ x.squeeze() # remove channel dimension of x.
-        score = - (y - y_pred).T @ (-A) / sigma_n**2
+        score = - (y - y_pred) @ (-A) / sigma_n**2
         return score.unsqueeze(0) # give score back its channel dimensions
     
     def score_fn(x, y, A, sigma_n):
@@ -105,7 +96,6 @@ if __name__ == "__main__":
     parser.add_argument("--data_path", required=True)
     parser.add_argument("--prior_model", default=None, help="Path to prior score model. Default is None, not using a score model for the prior.")
     parser.add_argument("--prior_temperature", default=0, type=float, help="Temperature at which to evaluate prior model. Default is 0.")
-    parser.add_argument("--transpose_response", action="store_true", help="Transpose the response matrix from the data")
     parser.add_argument("--checkpoints_directory", default=None)
     parser.add_argument("--logname", default=None)
     parser.add_argument("--logdir", default=None)

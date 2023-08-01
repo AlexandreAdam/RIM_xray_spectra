@@ -11,8 +11,7 @@
 
 source $HOME/environments/milex/bin/activate
 python $HOME/scratch/RIM_xray_spectra/scripts/train_rim.py \
-    --data_path=$HOME/scratch/RIM_xray_spectra/data/RIM_clusters/\
-    --transpose_response\
+    --data_path=$HOME/scratch/RIM_xray_spectra/data/\
     --logdir=$HOME/scratch/RIM_xray_spectra/models/\
     --logname_prefix=rim_xray_xlusters_light\
     --snr_max=1000\

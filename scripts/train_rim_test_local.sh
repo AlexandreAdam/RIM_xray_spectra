@@ -1,7 +1,6 @@
 #!/bin/bash
 python $HOME/Desktop/Projects/RIM_xray_spectra/scripts/train_rim.py \
-    --data_path=$HOME/Desktop/Projects/RIM_xray_spectra/data/RIM_clusters/\
-    --transpose_response\
+    --data_path=$HOME/Desktop/Projects/RIM_xray_spectra/data/\
     --logdir=$HOME/Desktop/Projects/RIM_xray_spectra/models/\
     --logname_prefix=rim_local_test\
     --snr_max=1000\

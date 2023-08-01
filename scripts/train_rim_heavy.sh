@@ -11,11 +11,10 @@
 
 source $HOME/environments/milex/bin/activate
 python $HOME/scratch/RIM_xray_spectra/scripts/train_rim.py \
-    --data_path=$HOME/scratch/RIM_xray_spectra/data/RIM_clusters/\
-    --transpose_response\
+    --data_path=$HOME/scratch/RIM_xray_spectra/data/\
     --logdir=$HOME/scratch/RIM_xray_spectra/models/\
     --logname_prefix=rim_xray_clusters_heavy\
-    --snr_max=1000\
+    --snr_max=100\
     --snr_min=5\
     --noise_distribution=log_uniform\
     --hyperparameters=$HOME/scratch/RIM_xray_spectra/scripts/rim_xray_heavy_hparams.json\
